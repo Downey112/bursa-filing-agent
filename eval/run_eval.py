@@ -11,6 +11,7 @@ Scoring per filing:
 """
 
 import argparse
+import json
 import sys
 import time
 from pathlib import Path
@@ -20,10 +21,18 @@ import yaml
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from bursa_agent import agent  # noqa: E402
+from bursa_agent import agent, extract  # noqa: E402
 from bursa_agent.filings import download, load_registry  # noqa: E402
 
 FIELDS = ("total_assets", "total_liabilities", "total_equity")
+
+
+def fixture_pages(pdf_path: Path) -> list[tuple[int, str]]:
+    """Stand-in for extract.statement_pages that reads the saved text (see eval/snapshot.py)."""
+    data = json.loads((ROOT / "eval" / "fixtures" / f"{Path(pdf_path).stem}.json").read_text(encoding="utf-8"))
+    if data["scanned"]:
+        raise extract.ScannedPDF(f"{Path(pdf_path).name} has no text layer")
+    return [tuple(p) for p in data["pages"]]
 
 
 def score(result: dict, expected: dict) -> str:
@@ -39,13 +48,18 @@ def score(result: dict, expected: dict) -> str:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--llm", action="store_true", help="allow the LLM fallback (needs GROQ_API_KEY)")
+    parser.add_argument("--offline", action="store_true",
+                        help="read statement pages from eval/fixtures instead of the PDFs (used in CI)")
     args = parser.parse_args()
 
+    if args.offline:
+        extract.statement_pages = fixture_pages
     expected = yaml.safe_load((ROOT / "eval" / "expected.yaml").read_text(encoding="utf-8"))
     registry = load_registry()
     rows = []
     for filing_id, exp in expected.items():
-        download(registry[filing_id])
+        if not args.offline:
+            download(registry[filing_id])
         started = time.perf_counter()
         result = agent.run(registry[filing_id], llm="default" if args.llm else None)
         rows.append((filing_id, exp["status"], result, score(result, exp), time.perf_counter() - started))

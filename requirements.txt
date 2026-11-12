@@ -1,0 +1,7 @@
+pdfplumber==0.11.10
+pydantic==2.14.3
+pyyaml==6.0.3
+requests==2.34.2
+groq==1.7.0
+langgraph==1.2.20
+mcp==2.3.0

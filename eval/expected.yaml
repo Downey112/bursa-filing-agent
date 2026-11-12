@@ -1,0 +1,17 @@
+# Hand-checked current-period totals, read from each statement of financial position on
+# 12 Nov 2026, in the statement's own unit. Each row satisfies assets = liabilities + equity.
+# status: what a correct pipeline should end with when no LLM is configured.
+gamuda_4QFY2026:    {status: ok, unit: RM thousand, total_assets: 36901070, total_liabilities: 23905639, total_equity: 12995431}
+genting_2Q2026:     {status: ok, unit: RM million, total_assets: 105257.9, total_liabilities: 58780.0, total_equity: 46477.9}
+gentingmy_2Q2026:   {status: ok, unit: RM million, total_assets: 33154.3, total_liabilities: 22812.5, total_equity: 10341.8}
+ihh_2Q2026:         {status: ok, unit: RM million, total_assets: 58820, total_liabilities: 23632, total_equity: 35188}
+mrdiy_2Q2026:       {status: ok, unit: RM thousand, total_assets: 4243476, total_liabilities: 2412261, total_equity: 1831215}
+sdproperty_2Q2026:  {status: ok, unit: RM thousand, total_assets: 19622538, total_liabilities: 8303572, total_equity: 11318966}
+simedarby_4QFY2026: {status: ok, unit: RM million, total_assets: 46078, total_liabilities: 22312, total_equity: 23766}
+ytlpower_4QFY2026:  {status: ok, unit: RM thousand, total_assets: 76923546, total_liabilities: 54624500, total_equity: 22299046}
+# Text layer is garbled (vertically stacked glyphs): must NOT be reported as ok from bad numbers.
+ytlcorp_4QFY2026:   {status: needs_review}
+# No "Total assets" line printed: rules cannot read it; the LLM fallback may.
+axiata_2Q2026:      {status: needs_review}
+# Scanned PDF without a text layer.
+tenaga_2Q2026:      {status: unsupported}

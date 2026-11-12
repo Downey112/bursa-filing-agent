@@ -1,0 +1,47 @@
+# Quarterly reports of Bursa Malaysia listed companies, taken from each company's own investor
+# relations site (bursamalaysia.com blocks scripted downloads). All periods end mid-2026.
+# `python -m bursa_agent.filings` downloads them into filings/pdf/ (not committed).
+- id: gamuda_4QFY2026
+  company: Gamuda Berhad
+  period_end: 2026-07-31
+  url: https://gamuda.listedcompany.com/misc/qr/quarterly_report_20260731.pdf
+- id: genting_2Q2026
+  company: Genting Berhad
+  period_end: 2026-06-30
+  url: https://www.genting.com/wp-content/uploads/2026/08/GENT_2Q2026_QRpt_PressRelease.pdf
+- id: gentingmy_2Q2026
+  company: Genting Malaysia Berhad
+  period_end: 2026-06-30
+  url: https://www.gentingmalaysia.com/wp-content/uploads/2026/08/GENM-2Q26-Ann-Press-Release.pdf
+- id: ihh_2Q2026
+  company: IHH Healthcare Berhad
+  period_end: 2026-06-30
+  url: https://ihhmy.listedcompany.com/misc/qr/IHH_Q2_2026_Quarterly_Report.pdf
+- id: mrdiy_2Q2026
+  company: MR D.I.Y. Group (M) Berhad
+  period_end: 2026-06-30
+  url: https://corporate.mrdiy.com/misc/qr/quarterly_report_20260630.pdf
+- id: sdproperty_2Q2026
+  company: Sime Darby Property Berhad
+  period_end: 2026-06-30
+  url: https://www.simedarbyproperty.com/sites/default/files/2026-08/1.%20Quarterly%20Report%20Q2%20FY2026.pdf
+- id: simedarby_4QFY2026
+  company: Sime Darby Berhad
+  period_end: 2026-06-30
+  url: https://www.sime.com/wp-content/uploads/2026/08/QR-Q4FY26-BOD.pdf
+- id: ytlpower_4QFY2026
+  company: YTL Power International Berhad
+  period_end: 2026-06-30
+  url: https://www.ytl.com/wp-content/uploads/ytles/sites/2/files/quarterly-report/YTLPIQ4FY2026.pdf
+- id: ytlcorp_4QFY2026
+  company: YTL Corporation Berhad
+  period_end: 2026-06-30
+  url: https://www.ytl.com/wp-content/uploads/ytles/sites/5/files/quarterly-report/YTLCorpQ4FY2026.pdf
+- id: axiata_2Q2026
+  company: Axiata Group Berhad
+  period_end: 2026-06-30
+  url: https://axiata.listedcompany.com/misc/quarterly_report_2Q2026.pdf
+- id: tenaga_2Q2026
+  company: Tenaga Nasional Berhad
+  period_end: 2026-06-30
+  url: https://www.tnb.com.my/assets/quarterly_results/Financial_Unaudited_Results_-_2QFY2026.pdf
